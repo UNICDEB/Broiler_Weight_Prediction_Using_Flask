@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Poultry_Weight_Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+  <h1><i>BROILER WEIGHT PREDICTION</i></h1>
+ <div class="login">
+  
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Week" placeholder="Age in Weeks (1 to 6)" required="required" />
+        <input type="text" name="Temp_Max" placeholder="Maximum Temperature" required="required" />
+        <input type='text' name= 'Temp_Min' placeholder="Minimum Temperature" required="required"/>
+        <input type="text" name="Humd_Max" placeholder="Maximum Humidity" required="required"/>
+        <input type="text" name="Humd_min" placeholder="Minimum Humidity" required="required"/>
+        <input type="text" name="Nh3_Max" placeholder="Maximum Ammonia" required="required"/>
+        <input type="text" name="Nh3_Min" placeholder="Minimum Ammonia" required="required" />
+        <input type="text" name="Feed" placeholder="Feed Intake" required="required"/>
+		
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
